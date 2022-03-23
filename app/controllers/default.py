@@ -1,9 +1,10 @@
 from app import app
 from markupsafe import escape
 from flask import render_template
+from flask import request
 
 
-@app.route('/')
+
 @app.route('/index/', defaults= {'name' : 'users', 'job' : 'No Job', 'channel' : 'No channel'})
 @app.route('/index/<name>/<job>/<channel>')
 
@@ -13,8 +14,24 @@ def index(name, job , channel):
 
     return render_template('index.html', name = name, data = data)
 
+
 @app.route('/contact')
 
 def contat():
 
     return render_template('contact.html')
+
+
+@app.route('/login')
+
+def login():
+    
+    return render_template('login.html')
+
+
+@app.route('/autenticar', methods= ['GET'])
+def autenticar():
+    user = request.args.get('User')
+    password = request.args.get('Password')
+    
+    return f'Usuário é {user} e sua senha é {password}'
