@@ -4,11 +4,12 @@ from flask import render_template
 
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index/', defaults= {'name' : 'users', 'job' : 'No Job', 'channel' : 'No channel'})
+@app.route('/index/<name>/<job>/<channel>')
 
-def index():
-    name= "Pedro"
-    data= {'Job' : 'Programmer', 'Channel' : 'Code Park'}
+def index(name, job , channel):
+
+    data= {'Job' : job , 'Channel' : channel }
 
     return render_template('index.html', name = name, data = data)
 
