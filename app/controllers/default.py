@@ -29,9 +29,9 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/autenticar', methods= ['GET'])
+@app.route('/authenticate', methods= ['GET'])
 def autenticar():
     user = request.args.get('User')
     password = request.args.get('Password')
     
-    return f'Usuário é {user} e sua senha é {password}'
+    return f'User is {user} and password is {password}'
